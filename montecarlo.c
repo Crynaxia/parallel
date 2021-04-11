@@ -9,6 +9,10 @@
 
 int main(int argc, char** argv)
 {
+   if(argc != 2){
+      printf("wrong number of arguments\n");
+      return EXIT_FAILURE;
+   }
    int niter=0;
    double x,y;
    int i,count=0; /* # of points in the 1st quadrant of unit circle */
