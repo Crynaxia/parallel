@@ -1,13 +1,13 @@
 CFLAGS = -std=gnu11 -Wall -Werror -Wextra -O2 -fopenmp
 
 .PHONY: all
-all: matrix monte_critical monte_atomic monte_reduction
+all: matrix montecarlo_critical montecarlo_atomic montecarlo_reduction
 
 .PHONY: clean
 clean:
-	$(RM) matrix monte_atomic monte_critical monte_reduction
+	$(RM) matrix montecarlo_atomic montecarlo_critical montecarlo_reduction
 
 matrix: matrix.c
-monte_atomic: monte_atomic.c
-monte_critical: monte_critical.c
-monte_reduction: monte_reduction.c
+monte_atomic: montecarlo_atomic.c
+monte_critical: montecarlo_critical.c
+monte_reduction: montecarlo_reduction.c

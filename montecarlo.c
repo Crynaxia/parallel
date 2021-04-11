@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
+#include <omp.h>
 #define SEED 35791246
 
 int main(int argc, char **argv)
@@ -26,6 +27,7 @@ int main(int argc, char **argv)
    srand(SEED);
    count = 0;
 
+   double start_time = omp_get_wtime();
    for (i = 0; i < niter; i++)
    {
       x = (double)rand() / RAND_MAX;
@@ -35,6 +37,8 @@ int main(int argc, char **argv)
          count++;
    }
    pi = (double)count / niter * 4;
+   double end_time = omp_get_wtime();
+   printf("time: %2.2f seconds\n", end_time - start_time);
    printf("# of trials= %d , estimate of pi is %.16f \n", niter, pi);
 
    return EXIT_SUCCESS;

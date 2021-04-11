@@ -26,6 +26,8 @@ int main(int argc, char **argv)
 
    /* initialize random numbers */
    srand(SEED);
+
+   double start_time = omp_get_wtime();
 #pragma omp parallel private(x, y, z)
    {
 #pragma omp for
@@ -42,6 +44,8 @@ int main(int argc, char **argv)
       }
    }
    pi = (double)count / niter * 4;
+   double end_time = omp_get_wtime();
+   printf("time: %2.2f seconds\n", end_time - start_time);
    printf("# of trials= %d , estimate of pi is %.16f \n", niter, pi);
 
    return EXIT_SUCCESS;

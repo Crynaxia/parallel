@@ -7,52 +7,52 @@
 
 echo "montecarlo 1 thread"
 export OMP_NUM_THREADS=1
-/usr/bin/time -v montecarlo 500000000
+/usr/bin/time -v ./montecarlo 500000000
 
 echo "atomic 1 thread"
-/usr/bin/time -v monte_atomic 500000000
+/usr/bin/time -v ./monte_atomic 500000000
 
 echo "critical 1 thread"
-/usr/bin/time -v monte_critical 500000000
+/usr/bin/time -v ./monte_critical 500000000
 
 echo "reduction 1 thread"
-/usr/bin/time -v monte_reduction 500000000
+/usr/bin/time -v ./monte_reduction 500000000
 
 echo "montecarlo 2 thread"
 export OMP_NUM_THREADS=2
-/usr/bin/time -v montecarlo 500000000
+/usr/bin/time -v ./montecarlo 500000000
 
 echo "atomic 2 thread"
-/usr/bin/time -v monte_atomic 500000000
+/usr/bin/time -v ./monte_atomic 500000000
 
 echo "critical 2 thread"
-/usr/bin/time -v monte_critical 500000000
+/usr/bin/time -v ./monte_critical 500000000
 
 echo "reduction 2 thread"
-/usr/bin/time -v monte_reduction 500000000
+/usr/bin/time -v ./monte_reduction 500000000
 
 echo "montecarlo 4 thread"
 export OMP_NUM_THREADS=4
-/usr/bin/time -v montecarlo 500000000
+/usr/bin/time -v ./montecarlo 500000000
 
 echo "atomic 4 thread"
-/usr/bin/time -v monte_atomic 500000000
+/usr/bin/time -v ./monte_atomic 500000000
 
 echo "critical 4 thread"
-/usr/bin/time -v monte_critical 500000000
+/usr/bin/time -v ./monte_critical 500000000
 
 echo "reduction 4 thread"
-/usr/bin/time -v monte_reduction 500000000
+/usr/bin/time -v ./monte_reduction 500000000
 
 echo "montecarlo 8 thread"
 export OMP_NUM_THREADS=8
-/usr/bin/time -v montecarlo 500000000
+/usr/bin/time -v ./montecarlo 500000000
 
 echo "atomic 8 thread"
-/usr/bin/time -v monte_atomic 500000000
+/usr/bin/time -v ./monte_atomic 500000000
 
 echo "critical 8 thread"
-/usr/bin/time -v monte_critical 500000000
+/usr/bin/time -v ./monte_critical 500000000
 
 echo "reduction 8 thread"
-/usr/bin/time -v monte_reduction 500000000
+/usr/bin/time -v ./monte_reduction 500000000
