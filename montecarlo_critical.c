@@ -8,37 +8,43 @@
 #include <omp.h>
 #define SEED 35791246
 
-int main(int argc, char** argv)
+int main(int argc, char **argv)
 {
-   
-   int niter=0;
-   
-   int count=0; /* # of points in the 1st quadrant of unit circle */
+
+   int niter = 0;
+   niter = atoi(argv[1]);
+
+   if (argc != 2 || niter == 0)
+   {
+      printf("Usage %s <number of iterations>\n", argv[0]);
+   }
+
+   int count = 0; /* # of points in the 1st quadrant of unit circle */
    double pi;
    double z;
-   double x,y;
-
-   niter = atoi(argv[1]);
+   double x, y;
 
    /* initialize random numbers */
    srand(SEED);
-   #pragma omp parallel private(x,y,z)
+#pragma omp parallel private(x, y, z)
    {
-   #pragma omp for
-   for (int i=0; i<niter; i++) {
-      x = (double)rand()/RAND_MAX;
-      y = (double)rand()/RAND_MAX;
-      z = x*x+y*y;
-      if (z<=1) {
-         #pragma omp critical
+#pragma omp for
+      for (int i = 0; i < niter; i++)
+      {
+         x = (double)rand() / RAND_MAX;
+         y = (double)rand() / RAND_MAX;
+         z = x * x + y * y;
+         if (z <= 1)
          {
-            count++;
-         }
+#pragma omp critical
+            {
+               count++;
+            }
          }
       }
    }
-   pi=(double)count/niter*4;
-   printf("# of trials= %d , estimate of pi is %.16f \n",niter,pi);
+   pi = (double)count / niter * 4;
+   printf("# of trials= %d , estimate of pi is %.16f \n", niter, pi);
 
    return EXIT_SUCCESS;
 }
