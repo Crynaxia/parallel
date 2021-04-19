@@ -1,0 +1,5 @@
+the program splits into 2 threads
+the child loops until the master sets the flag to 1
+this works most of the time without flush
+but through memory inconsistencies it can get stuck in the loops
+using flush ensures constistency
