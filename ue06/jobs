@@ -1,0 +1,17 @@
+#!/bin/bash
+
+#$ -q std.q
+#$ -cwd
+#$ -N pwd/ue06
+
+echo "prefix_seq"
+export OMP_NUM_THREADS=1
+./prefix_seq 1000000000
+
+echo "prefix_par"
+export OMP_NUM_THREADS=1
+./prefix_par 1000000000
+
+echo "prefix_par8"
+export OMP_NUM_THREADS=8
+./prefix_par 1000000000
