@@ -1,0 +1,30 @@
+there are 3 proc_bind modes
+
+master
+    uses only 1 core for every thread
+    times
+    work took 3.720352 seconds
+    work took 3.764887 seconds
+    work took 3.735059 seconds
+    work took 3.714193 seconds
+
+close
+    uses multiple cores on the same partition and spreads them equally
+    times
+    work took 3.82574 seconds
+    work took 3.719461 seconds
+    work took 3.699492 seconds
+    work took 3.696984 seconds
+
+spread
+    spreads threads equally over partitions
+    times:
+    work took 3.683110 seconds
+    work took 3.749659 seconds
+    work took 3.703161 seconds
+    work took 3.752561 seconds
+
+    the time differences are very marginal
+    could be because atomic makes a bottleneck and does not allow for
+    good parallisation, but with reduction the time was way to small
+    except with nested for loops.

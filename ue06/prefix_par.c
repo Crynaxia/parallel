@@ -18,20 +18,29 @@ int main(int argc, char** argv) {
 
 	int* b = malloc(N * sizeof(int));
 	int* a = malloc(N * sizeof(int));
+
 	double start, end;
+
+	int threads = omp_get_num_threads();
+
+	for(int i = 0; i < N; ++i) {
+		a[i] = 1;
+	}
 
 	start = omp_get_wtime();
 	b[0] = 0;
-	a[0] = 1;
+
 	int i = 0;
+
 #pragma omp for
 	for(i = 1; i < N; i++) {
-		a[i] = 1;
+
 		b[i] = b[i - 1] + a[i - 1];
 	}
+
 	end = omp_get_wtime();
 
-	printf("value: %9d\ttime: %1.6f\n", b[N - 1], end - start);
+	printf("value: %9d\ttime: %1.6f threads: %d\n", b[N - 1], end - start, threads);
 
 	free(a);
 	free(b);

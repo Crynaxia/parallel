@@ -10,7 +10,7 @@ int main(void)
     int iterations = 50000000;
 
     start = omp_get_wtime();
-#pragma omp parallel proc_bind(spread) num_threads(4)
+#pragma omp parallel proc_bind(close) num_threads(4)
     {
 #pragma omp parallel for
         for (int i = 0; i < iterations; ++i)
